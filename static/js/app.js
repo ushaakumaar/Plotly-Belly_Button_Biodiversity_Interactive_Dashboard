@@ -282,3 +282,9 @@ function onPageLoad() {
         optionChanged(selDataset.property('value'));
     });
 }
+
+/***************************************************
+LOAD DROPDOWN AND RENDER DATA/CHARTS - ON PAGE LOAD
+****************************************************/
+
+onPageLoad();
