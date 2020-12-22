@@ -70,7 +70,7 @@ function loadHBar(value, filteredSampleData) {
     var layoutHBar = {
         showlegend: false,
         margin: {
-            t: 30,
+            t: 70,
             b: 40
         },
         xaxis: {
