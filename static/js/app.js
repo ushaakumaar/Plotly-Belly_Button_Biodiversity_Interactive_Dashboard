@@ -86,3 +86,47 @@ function loadHBar(value, filteredSampleData) {
     // Render the bar plot to the div tag with id "bar"
     Plotly.newPlot('bar', dataHBar, layoutHBar);
 }
+
+// Function to render the Bubble chart for the user selected ID
+function loadBubble(value, filteredSampleData) {
+
+    // Retrieve sample values, otu ids and otu labels for the user selected ID
+    sampleValues = filteredSampleData.sample_values;
+    otuIds = filteredSampleData.otu_ids;
+    otuLabels = filteredSampleData.otu_labels;
+
+    // Create an array to hold opacity for every bubble
+    opacity = otuIds.map(id => 0.75);
+
+    // Trace for creating bubble chart
+    var traceBubble = {
+        x: otuIds,
+        y: sampleValues,
+        text: otuLabels,
+        mode: 'markers',
+        marker: {
+            color: otuIds,
+            colorscale: 'Earth',
+            opacity: opacity,
+            size: sampleValues
+        }
+    };
+
+    // Data for creating bubble chart
+    var dataBubble = [traceBubble];
+
+    // Layout for creating bubble chart
+    var layoutBubble = {
+        showlegend: false,
+        xaxis: {
+            title: 'OTU ID',
+        },
+        yaxis: {
+            title: 'Number of Samples',
+        },
+        title: `All OTUs for Test Subject ID - ${value} `
+    };
+
+    // Render the bubble chart to the div tag with id "bubble"
+    Plotly.newPlot('bubble', dataBubble, layoutBubble);
+}
