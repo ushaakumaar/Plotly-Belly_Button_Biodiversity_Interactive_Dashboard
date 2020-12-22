@@ -150,3 +150,90 @@ function gaugePointer(value) {
 
     return path;
 }
+
+// Function to render the Gauge chart for the user selected ID
+function loadGauge(value, washFreq) {
+
+    // Update the Title for the chart with the user selected ID
+    var guageTitle = d3.select('#gauge-heading-1');
+    guageTitle.html(`<strong>Wash Frequency for Test Subject ID ${value}</strong>`)
+
+    // Convert the washFreq to a value between 0 and 180
+    var level = washFreq * 180 / 9;
+
+    // Create needle head
+    var traceNeedleHead = {
+        type: 'scatter',
+        x: [0],
+        y: [0],
+        marker: { size: 18, color: '850000' },
+        showlegend: false,
+        name: 'speed',
+        text: washFreq,
+        hoverinfo: 'text+name'
+    }
+
+    // Create the guage
+    var traceGauge = {
+        type: 'pie',
+        hole: .5,
+        values: [50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50],
+        text: ['8-9', '7-8', '6-7', '5-6', '4-5', '3-4', '2-3', '1-2', '0-1', ' '],
+        rotation: 90,
+        textinfo: 'text',
+        textposition: 'inside',
+        marker: {
+            colors: [
+                '#7FB485',
+                '#84BB8A',
+                '#86BF7F',
+                '#B6CC8A',
+                '#D4E494',
+                '#E4E8AF',
+                '#E8E6C8',
+                '#F3F0E4',
+                '#F7F2EB',
+                '#FFFFFF',
+            ]
+        },
+        labels: ['8-9', '7-8', '6-7', '5-6', '4-5', '3-4', '2-3', '1-2', '0-1', ' '],
+        hoverinfo: 'label',
+        showlegend: false
+    }
+
+    var dataGauge = [traceNeedleHead, traceGauge];
+
+    var layoutGauge = {
+        // Create needle
+        shapes: [{
+            type: 'path',
+            path: gaugePointer(level),
+            fillcolor: '850000',
+            line: {
+                color: '850000'
+            }
+        }],
+        autosize: true,
+        xaxis: {
+            zeroline: false,
+            showticklabels: false,
+            showgrid: false,
+            range: [-1, 1]
+        },
+        yaxis: {
+            zeroline: false,
+            showticklabels: false,
+            showgrid: false,
+            range: [-1, 1]
+        },
+        margin: {
+            l: 0,
+            r: 0,
+            t: 0,
+            b: 0
+        }
+    };
+
+    // Render the gauge chart to the div tag with id "gauge"
+    Plotly.newPlot('gauge', dataGauge, layoutGauge);
+}
