@@ -31,8 +31,7 @@ function loadMetaData(value, filteredMetaData) {
     metadata.html('');
 
     // Render the Demographic Info
-    // var table = metadata.append("table").classed("table", true);
-    var table = metadata.append("table");
+    var table = metadata.append("table").classed("table table-striped", true);
     Object.entries(filteredMetaData).forEach(([key, value]) => {
         var row = table.append("tr");
         var initCapKey = key[0].toUpperCase() + key.substr(1).toLowerCase();
