@@ -262,3 +262,23 @@ function optionChanged(value) {
     // Render the Gauge chart for the user selected ID
     loadGauge(value, washFreq);
 }
+
+// Function to load ID dropdown and render data/charts on page load
+function onPageLoad() {
+    // Read the data from JSON file
+    d3.json('static/data/samples.json').then(function(data) {
+
+        // retrieve required info from json
+        ids = data.names;
+        metadatas = data.metadata;
+        samples = data.samples;
+
+        // populate the dropdown element with IDs
+        populateIDDropdown();
+
+        // render the demographic info and charts for 
+        // the first ID in the dropdown
+        var selDataset = d3.select('#selDataset');
+        optionChanged(selDataset.property('value'));
+    });
+}
