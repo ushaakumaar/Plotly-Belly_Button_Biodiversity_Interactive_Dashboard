@@ -130,3 +130,23 @@ function loadBubble(value, filteredSampleData) {
     // Render the bubble chart to the div tag with id "bubble"
     Plotly.newPlot('bubble', dataBubble, layoutBubble);
 }
+
+// Function to calc gauge needle points
+function gaugePointer(value) {
+
+    var degrees = 180 - value;
+    var radius = .5;
+    var radians = degrees * Math.PI / 180;
+    var x = radius * Math.cos(radians);
+    var y = radius * Math.sin(radians);
+
+    // Path: to create a triangle
+    var mainPath = 'M -.0 -0.035 L .0 0.035 L ',
+        pathX = String(x),
+        space = ' ',
+        pathY = String(y),
+        pathEnd = ' Z';
+    var path = mainPath.concat(pathX, space, pathY, pathEnd);
+
+    return path;
+}
