@@ -36,7 +36,7 @@ function loadMetaData(value, filteredMetaData) {
         var row = table.append("tr");
         var initCapKey = key[0].toUpperCase() + key.substr(1).toLowerCase();
         var keyCell = row.append("th").text(`${initCapKey}`);
-        var valueCell = row.append("td").text(`${value}`);
+        var valueCell = row.append("td").text(`${value}`).style("word-break", "break-word");
     });
 }
 
