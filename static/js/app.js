@@ -237,3 +237,28 @@ function loadGauge(value, washFreq) {
     // Render the gauge chart to the div tag with id "gauge"
     Plotly.newPlot('gauge', dataGauge, layoutGauge);
 }
+
+// Function to handle the ID dropdown change event
+function optionChanged(value) {
+
+    // Filter the metadatas based on the user selected ID
+    var filteredMetaData = metadatas.filter(metadata => parseInt(metadata.id) === parseInt(value))[0];
+
+    // Filter the samples based on the user selected ID
+    var filteredSampleData = samples.filter(sample => parseInt(sample.id) === parseInt(value))[0];
+
+    // Retrieve wash frequency for the user selected ID
+    var washFreq = metadatas.filter(metadata => parseInt(metadata.id) === parseInt(value))[0].wfreq;
+
+    // Render the Demographic Info for the user selected ID
+    loadMetaData(value, filteredMetaData);
+
+    // Render the Bar chart for the user selected ID
+    loadHBar(value, filteredSampleData);
+
+    // Render the Bubble chart for the user selected ID
+    loadBubble(value, filteredSampleData);
+
+    // Render the Gauge chart for the user selected ID
+    loadGauge(value, washFreq);
+}
