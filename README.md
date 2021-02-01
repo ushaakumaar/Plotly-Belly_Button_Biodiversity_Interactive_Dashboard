@@ -18,8 +18,6 @@ Created an interactive dashboard that displays Bar plot, Gauge Plot, Bubble plot
     - D3.js
   * JSON
 
----
-
 ## Usage
 
 Interactive Dashboard App is deployed in Github and Heroku: 
