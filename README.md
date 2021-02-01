@@ -18,8 +18,12 @@ Created an interactive dashboard that displays Bar plot, Gauge Plot, Bubble plot
     - D3.js
   * JSON
 
+---
+
+## Usage
+
 Interactive Dashboard App is deployed in Github and Heroku: 
-- [https://ushaakumaar.github.io/plotly-dashboard/](https://ushaakumaar.github.io/plotly-dashboard/)
+- [https://ushaakumaar.github.io/Plotly-Belly_Button_Biodiversity_Interactive_Dashboard/](https://ushaakumaar.github.io/Plotly-Belly_Button_Biodiversity_Interactive_Dashboard/)
 - [https://plotly-bellybutton-dashboard.herokuapp.com/](https://plotly-bellybutton-dashboard.herokuapp.com/)
 
 ---
